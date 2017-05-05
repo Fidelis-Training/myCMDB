@@ -7,6 +7,14 @@ using System.Threading.Tasks;
 namespace ServerInventory
 {
 
+    enum ServiceNames
+    {
+        Sysman,
+        SPEED,
+        EXO
+
+    }
+
     /// <summary>
     /// Servers information
     /// </summary>
@@ -31,7 +39,7 @@ namespace ServerInventory
             ServerName = servername;
         }
 
-        public ServerInfo(string servername,string servicename) : this(servername)
+        public ServerInfo(string servername, ServiceNames servicename) : this(servername)
         {
             ServiceName = servicename;
         }
@@ -57,7 +65,7 @@ namespace ServerInventory
         public int ServerId { get; private set; }
         public string ServerName { get; set; }
 
-        public string ServiceName { get; set; }
+        public ServiceNames ServiceName { get; set; }
 
         public string ForestName { get; set; }
 

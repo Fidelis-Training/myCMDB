@@ -30,8 +30,13 @@ namespace ServerInventory
                     case "1":
                         Console.Write("Server Name :");
                         var servername = Console.ReadLine();
-                        Console.Write("Service Name :");
-                        var servicename = Console.ReadLine();
+                        Console.WriteLine("Please choose from the list:");
+                        var servernames = Enum.GetNames(typeof(ServiceNames));
+                        for (int i = 0; i < servernames.Length; i++)
+                        {
+                            Console.WriteLine($"{i+1}.{servernames[i]}");
+                        }
+                        var servicename = (ServiceNames) (Convert.ToDecimal(Console.ReadLine()) - 1);
                         Console.Write("Forest Name :");
                         var forestname = Console.ReadLine();
                         Console.Write("Is Active: ");
@@ -46,6 +51,12 @@ namespace ServerInventory
                     case "3":
                         break;
                     case "4":
+                        var serverinfos = cmdb.GetAllServerInfo();
+                        foreach (var sinfo in serverinfos)
+                        {
+                            Console.WriteLine($"Server Id: {sinfo.ServerId}, Server Name: {sinfo.ServerName},Service Name: {sinfo.ServiceName}, Forest Name: {sinfo.ForestName}, Is Active: {sinfo.IsActive} ");
+                        }
+
                         break;
                     default:
                         break;

@@ -8,12 +8,21 @@ namespace ServerInventory
 {
     class cmdb
     {
-        public static ServerInfo AddServer(string servername,string servicename,string forestname,int isactive)
+
+        private static List<ServerInfo> serverinfos = new List<ServerInfo>();
+        public static ServerInfo AddServer(string servername, ServiceNames servicename,string forestname,int isactive)
         {
             var serverinfo = new ServerInfo(servername, servicename, forestname, isactive);
+            serverinfos.Add(serverinfo);
             return serverinfo;
 
 
+        }
+
+        public static List<ServerInfo> GetAllServerInfo()
+        {
+
+            return serverinfos;
         }
 
     }
